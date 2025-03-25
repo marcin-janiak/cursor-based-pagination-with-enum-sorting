@@ -2,7 +2,8 @@
 
 This issue arises in cursor pagination registered via **.AddDbContextCursorPagingProvider()**, specifically when dealing with sorting by enums.
 
-It applies to cursor pagination registered with **.AddDbContextCursorPagingProvider()**
+### Repro steps:
+Clone, run and observe console
 
 ### Issue
 
@@ -14,8 +15,8 @@ However, after performing a paginated request using the "after" variable, we enc
 Expression of type Host.SomeEnum cannot be used for parameter of type System.Object of method Int32 CompareTo(System.Object) (Parameter arg0).
 ```
 Stack Trace:
-
-`` at System.Dynamic.Utils.ExpressionUtils.ValidateOneArgument(MethodBase method, ExpressionType nodeKind, Expression arguments, ParameterInfo pi, String methodParamName, String argumentParamName, Int32 index)\r\n
+```
+ at System.Dynamic.Utils.ExpressionUtils.ValidateOneArgument(MethodBase method, ExpressionType nodeKind, Expression arguments, ParameterInfo pi, String methodParamName, String argumentParamName, Int32 index)\r\n
 at System.Linq.Expressions.Expression.Call(Expression instance, MethodInfo method, Expression arg0)\r\n
 at System.Linq.Expressions.Expression.Call(Expression instance, MethodInfo method, IEnumerable`1 arguments)\r\n
 at GreenDonut.Data.Expressions.ExpressionHelpers.BuildWhereExpression[T](ReadOnlySpan`1 keys, Cursor cursor, Boolean forward)\r\n
@@ -23,8 +24,8 @@ at HotChocolate.Data.Pagination.EfQueryableCursorPagingHandler`1.SliceAsync(IRes
 at HotChocolate.Types.Pagination.CursorPagingHandler.HotChocolate.Types.Pagination.IPagingHandler.SliceAsync(IResolverContext context, Object source)\r\n
 at HotChocolate.Types.Pagination.PagingMiddleware.InvokeAsync(IMiddlewareContext context)\r\n
 at HotChocolate.Execution.Processing.Tasks.ResolverTask.ExecuteResolverPipelineAsync(CancellationToken cancellationToken)\r\n
-at HotChocolate.Execution.Processing.Tasks.ResolverTask.TryExecuteAsync(CancellationToken cancellationToken)"``
-
+at HotChocolate.Execution.Processing.Tasks.ResolverTask.TryExecuteAsync(CancellationToken cancellationToken)"
+```
 ## Root Cause
 This occurs because enums do not implement IComparable<T>, making them incompatible with database-side sorting.
 
