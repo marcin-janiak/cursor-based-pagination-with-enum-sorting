@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host", "Host\Host.csproj", "{32172D69-B8E9-4B9D-8AEE-2150DA33FD33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32172D69-B8E9-4B9D-8AEE-2150DA33FD33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32172D69-B8E9-4B9D-8AEE-2150DA33FD33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32172D69-B8E9-4B9D-8AEE-2150DA33FD33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32172D69-B8E9-4B9D-8AEE-2150DA33FD33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
